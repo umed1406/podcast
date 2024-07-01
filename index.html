@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подкастеры</title>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(45deg, #1a237e, #311b92, #4a148c, #880e4f, #b71c1c, #bf360c);
+            color: #fff;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: moveBackground 20s linear infinite;
+        }
+        
+        @keyframes moveBackground {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50%, 50%);
+            }
+        }
+        
+        header h1 {
+            font-size: 2.8em;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            text-align: center;
+        }
+        
+        header nav {
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        header ul {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        header li {
+            margin-left: 30px;
+        }
+        
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s;
+            position: relative;
+        }
+        
+        header a::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #fff;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        header a:hover::after {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+        
+        .members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .member {
+            background: #1e1e1e;
+            padding: 30px;
+            box-shadow: 0 1px 3px rgba(255,255,255,0.1);
+            border-radius: 3px;
+            text-align: center;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .member::before {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(64, 93, 230, 0.2), rgba(88, 81, 219, 0.2), rgba(131, 58, 180, 0.2), rgba(193, 53, 132, 0.2), rgba(225, 48, 108, 0.2), rgba(253, 29, 29, 0.2));
+            transition: all 0.5s ease;
+        }
+        
+        .member:hover::before {
+            top: 0;
+        }
+        
+        .member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255,255,255,0.2);
+        }
+        
+        .member img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #E1306C;
+            transition: all 0.3s;
+        }
+        
+        .member:hover img {
+            transform: scale(1.1);
+        }
+        
+        .member h3 {
+            color: #e0e0e0;
+            font-size: 1.8em;
+            margin: 20px 0 10px;
+        }
+        
+        .member p {
+            color: #bdbdbd;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        .member a {
+            color: #64b5f6;
+            text-decoration: none;
+            font-size: 1.3em;
+            display: inline-block;
+            margin-top: 15px;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .member a:hover {
+            color: #2196f3;
+            transform: scale(1.1);
+        }
+        
+        .member a i {
+            background: -webkit-linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        
+        .about-us {
+            text-align: center;
+            padding-top: 80px;
+            padding-bottom: 40px;
+            background-color: #1e1e1e;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 1px 3px rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about-us::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, rgba(64, 93, 230, 0.1), rgba(88, 81, 219, 0.1), rgba(131, 58, 180, 0.1), rgba(193, 53, 132, 0.1), rgba(225, 48, 108, 0.1), rgba(253, 29, 29, 0.1));
+            transition: all 0.5s ease;
+        }
+        
+        .about-us:hover::before {
+            left: 0;
+        }
+        
+        .about-us h2 {
+            color: #e0e0e0;
+            font-size: 2em;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .about-us p {
+            color: #bdbdbd;
+            font-size: 1.1em;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            text-align: center;
+        }
+        .podcast-topics-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 30px;
+            padding: 12px 25px;
+            background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .podcast-topics-button span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .podcast-topics-button i {
+            margin-left: 10px;
+            font-size: 1.2em;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .podcast-topics-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(45deg);
+            z-index: 0;
+            transition: all 0.6s ease;
+        }
+        
+        .podcast-topics-button:hover::before {
+            left: 100%;
+        }
+        
+        .podcast-topics-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .contact {
+            background-color: #333;
+            padding: 40px 0;
+            color: #fff;
+        }
+        
+        .contact .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        
+        .contact .contact-text {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .contact .contact-text h2 {
+            color: #fff;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        .contact .contact-text p {
+            color: #bdbdbd;
+            font-size: 1.1em;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact .contact-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+        }
+        
+        .contact .contact-icons .contact-item {
+            text-align: center;
+            margin: 0 10px;
+        }
+        
+        .contact .contact-icons .contact-item i {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: #64b5f6;
+            transition: color 0.3s;
+        }
+        
+        .contact .contact-icons .contact-item p {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+        
+        .contact .contact-icons .contact-item a {
+            color: #64b5f6;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: color 0.3s;
+        }
+        
+        .contact .contact-icons .contact-item:hover i,
+        .contact .contact-icons .contact-item:hover a {
+            color: #2196f3;
+        }
+
+        .contact-image-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            border-radius: 50%;
+            overflow: hidden;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.3);
+            position: relative;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .contact-image-container:hover {
+            transform: scale(1.05) rotate(5deg);
+            box-shadow: 0 0 35px rgba(100, 181, 246, 0.5);
+        }
+        
+        .contact-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-image-container:hover .contact-image {
+            transform: scale(1.1);
+        }
+        
+        .contact-image-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(64, 93, 230, 0.3), rgba(88, 81, 219, 0.3), rgba(131, 58, 180, 0.3));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-image-container:hover::before {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Подкастеры</h1>
+            <nav>
+                <ul>
+                    <li><a href="#main">Главная</a></li>
+                    <li><a href="#about">О Нас</a></li>
+                    <li><a href="#contacts">Контакты</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div id="main"  class="members">
+        <div class="member">
+            <img src="hudayar.jpg" alt="Hudayar">
+            <h3>Hudayar</h3>
+            <p>Любит подкасты и путешествия.</p>
+            <a href="https://www.instagram.com/mccallisterhy" target="_blank">
+                <i class='bx bxl-instagram'></i> mccallisterhy
+            </a>
+        </div>
+
+        <div class="member">
+            <img src="umed.jpg" alt="Umed">
+            <h3>Umed</h3>
+            <p>Фанат музыки и искусства.</p>
+            <a href="https://www.instagram.com/mikel_hooter" target="_blank">
+                <i class='bx bxl-instagram'></i> mikel_hooter
+            </a>
+        </div>
+
+        <div class="member">
+            <img src="baha.jpg" alt="Baha">
+            <h3>Baha</h3>
+            <p>Эксперт по технологиям и инновациям.</p>
+            <a href="https://www.instagram.com/bahahomidov_" target="_blank">
+                <i class='bx bxl-instagram'></i> bahahomidov_
+            </a>
+        </div>
+    </div>
+
+    <section id="about" class="about-us">
+        <div class="container">
+            <h2>О Нас</h2>
+            <p>Мы - не просто команда подкастеров, а настоящая семья, соединенная общей страстью к творчеству и созданию захватывающего контента. В нашей компании собрались люди с разнообразными талантами и неиссякаемой энергией, такими как Умеджон, Баха и Худайяр.
+
+                Умеджон (Umedjon): Фанат музыки и искусства. 
+                
+                Баха (Baha): Эксперт по технологиям и инновациям.
+                
+                Худайяр (Hudayar): Любит подкасты и путешествия. 
+                
+                Каждый из команды приносит в проекты что-то уникальное и оригинальное. Мы не боимся экспериментировать, удивлять и вдохновлять нашу аудиторию. Слушая нас, вы погружаетесь в мир неожиданных и вдохновенных диалогов, где каждая тема приобретает новые грани благодаря нашему особому подходу. Вместе мы создаем контент, который не только развлекает, но и заставляет задуматься, оставляя яркие впечатления и подарки для ума и сердца."</p>
+            <a href="https://umed1406.github.io/podcast_website/" class="podcast-topics-button" target="_blank">
+                <span>Темы, которые мы обсуждаем</span>
+                <i class='bx bx-podcast'></i>
+            </a>
+        </div>
+    </section>
+
+    <section id="contacts" class="contact">
+        <div class="container">
+            <div class="contact-image-container">
+                <img src="contact_image.jpg" alt="Contact Us" class="contact-image">
+            </div>
+            <div class="contact-text">
+                <h2>Контакты</h2>
+                <p>Связаться с нами можно через:</p>
+            </div>
+            <div class="contact-icons">
+                <div class="contact-item">
+                    <i class="bx bxl-telegram"></i>
+                    <p>Telegram</p>
+                    <a href="https://t.me/username">+8613144316174</a>
+                </div>
+                <div class="contact-item">
+                    <i class="bx bxs-envelope"></i>
+                    <p>Gmail</p>
+                    <a href="mailto:latipovumed6@gmail.com">latipovumed6@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <i class="bx bxl-whatsapp"></i>
+                    <p>WhatsApp</p>
+                    <a href="https://wa.me/86wasdadgfad">+8613144316174</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+    
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
